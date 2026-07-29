@@ -1,0 +1,23 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean.DiophantineApproximationLayer
+import HautevilleHouse.DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean.ProbabilisticNumberTheoryLayer
+import HautevilleHouse.DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean.ErdosGintnerLayer
+import HautevilleHouse.DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean.KhinchinLayer
+
+namespace HautevilleHouse
+namespace DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean
+
+def bridgeClosed (A : AdmissibleClass) : Prop :=
+  DiophantineApproximationLayerClosed diophantineApproximationLayerCertificate ∧
+  ProbabilisticNumberTheoryLayerClosed probabilisticNumberTheoryLayerCertificate ∧
+  ErdosGintnerLayerClosed erdosGintnerLayerCertificate ∧
+  KhinchinLayerClosed khinchinLayerCertificate
+
+theorem bridge_from_admissible_class (A : AdmissibleClass) :
+    bridgeClosed A := by
+  exact And.intro diophantine_approximation_layer_closed_checked
+    (And.intro probabilistic_number_theory_layer_closed_checked
+    (And.intro erdos_gintner_layer_closed_checked khinchin_layer_closed_checked))
+
+end DiophantineApproximationProbabilisticNumberTheoryLemmaCanonicalLaneLean
+end HautevilleHouse
